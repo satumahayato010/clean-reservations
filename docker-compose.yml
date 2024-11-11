@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: clean-reservations
+    build: .
+    command: air
+    environment:
+      - WAIT_HOSTS=clean-reservations-mysql:3306
+      - GIN_MODE=release
+      - GIN_PORT=8080
+      - MYSQL_HOST=clean-reservations-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=clean-reservations-dev
+    depends_on:
+      - mysql
+    security_opt:
+      - apparmor:unconfined
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080
+  mysql:
+    container_name: clean-reservations-mysql
+    restart: always
+    image: mysql:8.0
+    volumes:
+      - clean-reservations-mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: clean-reservations-dev
+      MYSQL_ROOT_PASSWORD: password
+    command: --collation-server=utf8mb4_general_ci
+    ports:
+      - 3306:3306
+
+volumes:
+  clean-reservations-mysql:
+    driver: local

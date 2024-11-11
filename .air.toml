@@ -1,0 +1,9 @@
+# Air configuration file
+
+[build]
+cmd = "go build -o ./tmp/main ./cmd/main.go"
+bin = "./tmp/main"
+full_bin = "sh -c './tmp/main'"
+
+[log]
+level = "debug"
