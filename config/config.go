@@ -9,7 +9,7 @@ var (
 type Config struct {
 	GinPort       string `env:"GIN_PORT" envDefault:"8080"`
 	MySQLHost     string `env:"MYSQL_HOST"`
-	MySQLPort     string `env:"MYSQL_PORT" envDefault:"3306"`
+	MySQLPort     int    `env:"MYSQL_PORT" envDefault:"3306"`
 	MySQLUser     string `env:"MYSQL_USER"`
 	MySQLPassword string `env:"MYSQL_PASSWORD"`
 	MySQLDatabase string `env:"MYSQL_DATABASE"`

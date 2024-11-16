@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y curl \
     && go mod tidy \
     && go install go.uber.org/mock/mockgen@v0.3.0 \
     && go get -u gorm.io/gorm \
-    && go get -u gorm.io/driver/mysql
+    && go get -u gorm.io/driver/mysql \
+    && go install github.com/go-delve/delve/cmd/dlv@latest
 
 CMD ["air"]
