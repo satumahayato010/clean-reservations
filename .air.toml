@@ -3,7 +3,7 @@
 [build]
 cmd = "go build -o ./tmp/main ./cmd/main.go"
 bin = "./tmp/main"
-full_bin = "sh -c './tmp/main'"
+full_bin = "APP_USER=air dlv --listen=:2345 --headless=true --api-version=2 --accept-multiclient exec --continue ./tmp/main"
 
 [log]
 level = "debug"

@@ -23,7 +23,8 @@ services:
     volumes:
       - .:/app
     ports:
-      - 8080:8080
+      - 8080:8080    # アプリケーション用
+      - 2345:2345    # Delve デバッグ用
   mysql:
     container_name: clean-reservations-mysql
     restart: always
